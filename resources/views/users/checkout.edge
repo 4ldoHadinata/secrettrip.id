@@ -11,13 +11,22 @@
 </head>
 
 <body>
-  <div class="container">
+
+  <div class="container mt-3">
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+      <div class="container-fluid p-0">
+        <a class="navbar-brand" href="/"><img src="{{ asset('user/images/logo-with-text.svg') }}" alt=""></a>
+      </div>
+    </nav>
+  </div>
+
+  <div class="container mt-3">
     <div class="row">
       <form action="{{route('users.checkout.store')}}" method="post" enctype="multipart/form-data">
         {{csrfField() }}
         <div class="mb-3">
-          <h4>Complete your booking now.</h4>
-          <h3>Trasnfer Rp 40.000 to BCA - 543454334</h3>
+          <h2>One more step until your booking is done.</h2>
+          <h4>Transfer half of your budget or packet price to BCA - 543454334 so that we can process your booking</h4>
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Proof of Payment</label>
