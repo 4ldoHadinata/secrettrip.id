@@ -1,37 +1,9 @@
-# Adonis fullstack application
+<img src="./public/assets/user/images/logo-with-text.svg" />
 
-This is the fullstack boilerplate for AdonisJs, it comes pre-configured with.
+Secrettrip.id is a website-based application that offers a different and unique staycation experience for its users, users will feel an unexpected pleasant feeling when using this application. Secrettrip.is is built with Adonis.js and Bootstrap 5.
 
-1. Bodyparser
-2. Session
-3. Authentication
-4. Web security middleware
-5. CORS
-6. Edge template engine
-7. Lucid ORM
-8. Migrations and seeds
-
-## Setup
-
-Use the adonis command to install the blueprint
-
-```bash
-adonis new yardstick
-```
-
-or manually clone the repo and then run `npm install`.
-
-
-### Migrations
-
-Run the following command to run startup migrations.
-
-```js
-adonis migration:run
-```
-#   s e c r e t t r i p . i d 
-
-#Setup Secrettrip.id1. clone for this repository
+#Setup Secrettrip.id
+1. clone for this repository
 2. import database to local server (secrettrip_id.sql)
 3. setup your .env file for connect to mysql
 4. add in your .env file : ASSET_URL=http://${HOST}:${PORT}/assets
