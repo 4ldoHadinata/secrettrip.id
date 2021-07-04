@@ -21,9 +21,9 @@ class UserController {
      * @param {View} ctx.view
      */
     async index({ request, response, view, session }) {
-        const users = await User.all()
-        console.log(session.get('login'))
-        return view.render('users.index', { users: users.rows })
+        // const users = await User.all()
+        // console.log(session.get('login'))
+        // return view.render('users.index', { users: users.rows })
     }
 
     async loginPage({ response, view, session }) {

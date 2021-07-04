@@ -29,9 +29,12 @@
                 <td>{{testimonial.name}}</td>
                 <td>{{testimonial.testimonial}}</td>
                 <td>
-                  <a href="{{route('testimonial.edit', {id: testimonial.id})}}"><i class="fa fa-pencil fa-2x"
-                      aria-hidden="true"></i></a>
-                  <a href=""><i class="fa fa-remove fa-2x" aria-hidden="true"></i></a>
+                  <form action="{{route('testimonial.destroy', {id: testimonial.id})}}?_method=DELETE" method="post">
+                    {{csrfField() }}
+                    <a href="{{route('testimonial.edit', {id: testimonial.id})}}"><i class="fa fa-pencil fa-2x"
+                        aria-hidden="true"></i></a>
+                    <button type="submit"><i class="fa fa-remove fa-2x" aria-hidden="true" style="color: red;"></i></button>
+                  </form>
                 </td>
               </tr>
               @endeach

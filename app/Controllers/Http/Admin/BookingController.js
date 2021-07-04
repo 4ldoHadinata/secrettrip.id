@@ -23,9 +23,8 @@ class BookingController {
     async index({ request, response, view }) {
         const bookings = await Database
             .table('bookings')
-            .select('bookings.*', 'customers.name', 'packets.name as packet')
-            .innerJoin('customers', 'customers.id', 'bookings.customer_id')
-            .innerJoin('packets', 'packets.id', 'bookings.packet_id')
+            // .select('bookings.*', 'customers.name')
+            // .innerJoin('customers', 'customers.id', 'bookings.customer_id')
         return view.render('admin.booking.index', { bookings: bookings })
     }
 
@@ -74,9 +73,9 @@ class BookingController {
         let id = params.id
         const booking = await Database
             .from('bookings')
-            .select('bookings.*', 'customers.name', 'packets.name as packet')
-            .innerJoin('customers', 'customers.id', 'bookings.customer_id')
-            .innerJoin('packets', 'packets.id', 'bookings.packet_id')
+            // .select('bookings.*', 'customers.name', 'packets.name as packet')
+            // .innerJoin('customers', 'customers.id', 'bookings.customer_id')
+            // .innerJoin('packets', 'packets.id', 'bookings.packet_id')
             .where('bookings.id', id)
         return view.render('admin.booking.edit', { booking: booking[0] })
     }

@@ -37,7 +37,7 @@ Route.post('admin/login', 'UserController.login')
 Route.group(() => {
     Route.get('/', 'Admin/PageController.dashboard').as('dashboard')
     Route.get('logout', 'UserController.logout').as('logout')
-    Route.resource('users', 'UserController')
+        // Route.resource('users', 'UserController')
     Route.resource('packet', 'Admin/PacketController')
 
     Route.resource('booking', 'Admin/BookingController')
@@ -45,3 +45,7 @@ Route.group(() => {
 
     Route.resource('testimonial', 'Admin/TestimonialController')
 }).prefix('admin').middleware('login')
+Route.get('/', 'PageController.index').as('users.index')
+Route.post('/book', 'PageController.booking').as('users.booking.store')
+Route.get('/checkout', 'PageController.checkout').as('users.checkout')
+Route.post('/checkout', 'PageController.checkoutStore').as('users.checkout.store')

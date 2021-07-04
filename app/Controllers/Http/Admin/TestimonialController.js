@@ -120,7 +120,16 @@ class TestimonialController {
      * @param {Response} ctx.response
      */
     async destroy({ params, request, response }) {
-
+        try {
+            await Database
+                .table('testimonials')
+                .where('id', params.id)
+                .delete()
+            return response.route('testimonial.index')
+        } catch (error) {
+            session.flash({ error: 'Terjadi Kesalahan' })
+            return response.redirect('back')
+        }
     }
 }
 

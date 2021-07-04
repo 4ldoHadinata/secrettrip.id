@@ -9,8 +9,7 @@
             <h5 class="card-title mb-0">Testimonial</h5>
           </div>
           <form class="mb-3 col-4" style="margin-left: 5px; margin-right: 5px;" 
-          action="{{route('testimonial.update', {id: testimonial.id})}}" method="post">
-          <input type="hidden" value="_method" name="PUT">
+          action="{{route('testimonial.update', {id: testimonial.id})}}?_method=PUT" method="post">
             {{ csrfField() }}
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Name</label>
