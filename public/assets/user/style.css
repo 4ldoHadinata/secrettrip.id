@@ -1,0 +1,35 @@
+html, body {
+    margin: 0;
+}
+
+.bg-hero {
+    background: url('./images/hero-bg-town.svg');
+    background-size: cover;
+    background-position-x: center;
+}
+
+.bg-indonesia {
+    background: url('./images/hero-bg-indonesia.svg');
+    background-size: cover;
+}
+
+.bg-form {
+    background: #EDF4FF;
+}
+
+.bg-service {
+    background: url('./images/service-bg.svg');
+}
+
+.form-shadow {
+    box-shadow: 5px 4px 4px 0px #458FF64D;
+}
+
+.btn-book {
+    color: #458FF6;
+    font-weight: bold;
+}
+
+.rounded-25 {
+    border-radius: 25px;
+}

@@ -1,0 +1,53 @@
+@layout('admin.master')
+@section('body')
+<main class="content">
+  <div class="container-fluid p-0">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{booking.name}}">
+          </th>
+        </tr>
+        <tr>
+          <th scope="col">Packet Name</th>
+          <th scope="col">
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{booking.packet}}">
+          </th>
+        </tr>
+        <tr>
+          <th scope="col">Status Bayar</th>
+          <th scope="col">
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{booking.status_bayar}}">
+          </th>
+        </tr>
+        <tr>
+          <th scope="col">Verified Payment</th>
+          <th scope="col">
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{booking.verified_payment}}">
+          </th>
+        </tr>
+      </thead>
+    </table>
+    <div class="card" style="width: 18rem; margin-left: 15px;">
+        <img src="{{urll(booking.bukti_bayar)}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Payment</h5>
+          <a href="{{route('booking.accept', {id: booking.id})}}" class="btn btn-primary">Accept</a>
+        </div>
+      </div>
+  </div>
+</main>
+@endsection
+@section('scripts')
+@if(flashMessage('success'))
+  <script>
+    Swal.fire(
+      'Good job!',
+      '{{flashMessage('success')}}',
+      'success'
+    )
+  </script>
+@endif
+@endsection
