@@ -5,15 +5,15 @@ let adventurerPacket = document.getElementById('adventurerPacket');
 
 travellerPacket.addEventListener("click", function() {
     packetInput.value = "Traveller";
-    packetInput.disabled = true
+    packetInput.readonly = true
 });
 
 explorerPacket.addEventListener("click", function() {
     packetInput.value = "Explorer";
-    packetInput.disabled = true
+    packetInput.readonly = true
 });
 
 adventurerPacket.addEventListener("click", function() {
     packetInput.value = "Adventurer";
-    packetInput.disabled = true
+    packetInput.readonly = true
 });

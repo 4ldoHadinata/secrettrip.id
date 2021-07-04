@@ -18,7 +18,7 @@ class PageController {
             .select('price')
             .where('name', request.input('packet'))
         if (price.length > 0) {
-            booking['price'] = price
+            booking['price'] = price[0].price
         } else {
             booking['price'] = request.input('packet')
         }
@@ -37,7 +37,12 @@ class PageController {
     }
 
     async checkout({ request, response, view }) {
-        return view.render('users.checkout')
+        const price = await Database
+            .from('bookings')
+            .select('price')
+            .where('email', request.cookie('email'))
+        console.log(price)
+        return view.render('users.checkout', { price: price })
     }
 
     async checkoutStore({ request, response, session }) {

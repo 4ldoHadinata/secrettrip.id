@@ -23,7 +23,7 @@
             @each(booking in bookings)
               <tr>
                 <td>{{booking.id}}</td>
-                <td>{{booking.name}}</td>
+                <td>{{booking.full_name}}</td>
                 <td class="d-none d-xl-table-cell">{{booking.packet}}</td>
                 <td class="d-none d-xl-table-cell"><span class="badge bg-success">{{booking.status_bayar}}</span></td>
                 <td class="d-none d-md-table-cell"><span class="badge bg-success">{{booking.verified_payment}}</span></td>
