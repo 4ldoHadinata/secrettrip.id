@@ -85,7 +85,7 @@
                 </div>
                 <div class="mb-3">
                   <label for="packet" class="form-label">Packet / Budget</label>
-                  <input type="text" class="form-control" id="packet" name="packet" required>
+                  <input type="text" class="form-control" id="packet" name="packet" placeholder="$" required>
                 </div>
                 <button type="submit" class="btn border border-1 border-primary rounded-pill btn-book">Book Now</button>
               </form>
@@ -184,33 +184,17 @@
   <div id="testimonials" class="container mt-5 mb-5 p-4">
     <h2 class="text-center mb-5">Testimonials</h2>
     <div class="row g-2">
+      @each(testimonial in testimonials)
         <div class="col-md-4">
             <div class="card p-3 text-center px-4 testimonial">
                 <div class="user-content text-start">
-                    <h5>Anna</h5>
-                    <p>These trips are amazing, I booked it once and it took me to somewhere unexpected.</p>
+                    <h5>{{testimonial.name}}</h5>
+                    <p>{{testimonial.testimonial}}</p>
                 </div>
                 <div class="ratings"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card p-3 text-center px-4 testimonial">
-                <div class="user-content text-start">
-                    <h5>Michael</h5>
-                    <p>I didn't know such a beautiful place exists in my hometown until I used this service</p>
-                </div>
-                <div class="ratings"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card p-3 text-center px-4 testimonial">
-                <div class="user-content text-start">
-                    <h5>Jessica</h5>
-                    <p>This service took my staycation to the next level, promise you won;t regret it!</p>
-                </div>
-                <div class="ratings"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-            </div>
-        </div>
+        @endeach
     </div>
   </div>
 

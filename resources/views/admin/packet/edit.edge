@@ -1,0 +1,34 @@
+@layout('admin.master')
+@section('body')
+<main class="content">
+  <div class="container-fluid p-0">
+    <div class="row">
+      <div class="col-12 col-lg-12 col-xxl-9 d-flex">
+        <div class="card flex-fill">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Packet Bundle</h5>
+          </div>
+          <form class="mb-3 col-4" style="margin-left: 5px; margin-right: 5px;" 
+          action="{{route('packet.update', {id: packet.id})}}?_method=PUT" method="post">
+            {{ csrfField() }}
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Name</label>
+              <input type="text" class="form-control" value="{{packet.name}}" name="name" aria-describedby="emailHelp" required>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Price</label>
+              <input type="text" class="form-control" value="{{packet.price}}" name="price" aria-describedby="emailHelp" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+@if(flashMessage('error'))
+<script>
+alert('flashMessage('error')')
+</script>
+@endif
+@endsection

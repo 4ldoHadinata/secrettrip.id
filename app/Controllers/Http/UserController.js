@@ -47,7 +47,7 @@ class UserController {
                 session.put('login', true)
                 session.put('id', check.id)
                 session.put('nama', check.name)
-                return response.redirect('users')
+                return response.redirect('/')
             } else {
                 session.flash({ error: 'password salah' })
                 return response.redirect('back')

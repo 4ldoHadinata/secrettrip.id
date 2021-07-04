@@ -1,6 +1,7 @@
 'use strict'
 
 const Packet = use('App/Models/Packet')
+const Database = use('Database')
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
@@ -69,7 +70,12 @@ class PacketController {
      * @param {Response} ctx.response
      * @param {View} ctx.view
      */
-    async edit({ params, request, response, view }) {}
+    async edit({ params, request, response, view }) {
+        const packet = await Database
+            .from('packets')
+            .where('id', params.id)
+        return view.render('admin.packet.edit', { packet: packet[0] })
+    }
 
     /**
      * Update packet details.
@@ -79,7 +85,22 @@ class PacketController {
      * @param {Request} ctx.request
      * @param {Response} ctx.response
      */
-    async update({ params, request, response }) {}
+    async update({ params, request, response, session }) {
+        const data = {
+            name: request.input('name'),
+            price: request.input('price')
+        }
+        try {
+            await Database
+                .table('packets')
+                .where('id', params.id)
+                .update(data)
+            return response.route('packet.index')
+        } catch (error) {
+            session.flash({ error: 'Something Wrong! :( \n ' + error.message + '' })
+            return response.redirect('back')
+        }
+    }
 
     /**
      * Delete a packet with id.

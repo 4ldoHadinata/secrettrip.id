@@ -13,7 +13,17 @@ const Helpers = use('Helpers')
 class PageController {
     async booking({ request, response, view, session }) {
         const booking = request.all()
+        const price = await Database
+            .from('packets')
+            .select('price')
+            .where('name', request.input('packet'))
+        if (price.length > 0) {
+            booking['price'] = price
+        } else {
+            booking['price'] = request.input('packet')
+        }
         delete booking._csrf
+        console.log(booking)
         try {
             await Database
                 .table('bookings')
@@ -60,7 +70,9 @@ class PageController {
     }
 
     async index({ request, response, view }) {
-        return view.render('users.index')
+        const testimonials = await Database
+            .from('testimonials')
+        return view.render('users.index', { testimonials: testimonials })
     }
 }
 

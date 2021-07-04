@@ -3,7 +3,7 @@
 <main class="content">
   <div class="container-fluid p-0">
     <div class="row">
-      <div class="col-12 col-lg-12 col-xxl-9 d-flex">
+      <div class="col-12 col-lg-12 col-xxl-12 d-flex">
         <div class="card flex-fill">
           <div class="card-header">
             <h5 class="card-title mb-0">Bundle</h5>
@@ -12,24 +12,22 @@
             <thead>
               <tr>
                 <th>Name</th>
-                <th class="d-none d-xl-table-cell">Description</th>
                 <th class="d-none d-xl-table-cell">Price</th>
-                <th>Status</th>
                 <th class="d-none d-md-table-cell">Action</th>
               </tr>
             </thead>
             <tbody>
-            @each(packet in packets)
+              @each(packet in packets)
               <tr>
                 <td>{{packet.name}}</td>
                 <td class="d-none d-xl-table-cell">{{packet.price}}</td>
-                <td class="d-none d-xl-table-cell">{{packet.description}}</td>
-                <td><span class="badge bg-success">{{packet.status}}</span></td>
                 <td class="d-none d-md-table-cell">
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                  {{csrfField() }}
+                  <a href="{{route('packet.edit', {id: packet.id})}}"><i class="fa fa-pencil fa-2x"
+                      aria-hidden="true"></i></a>
                 </td>
               </tr>
-            @endeach
+              @endeach
             </tbody>
           </table>
         </div>
