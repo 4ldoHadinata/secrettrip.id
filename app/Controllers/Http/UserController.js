@@ -34,13 +34,19 @@ class UserController {
         }
     }
 
+    async name({ response, view, session }) {
+        return 'ok'
+    }
+
     async login({ request, response, session }) {
         const { username, password } = request.all()
         const check = await User.findBy('username', username)
+            // return Hash.make('admin')
         if (check) {
             if (Hash.verify(password, check.password)) {
                 session.put('login', true)
                 session.put('id', check.id)
+                session.put('nama', check.name)
                 return response.redirect('users')
             } else {
                 session.flash({ error: 'password salah' })

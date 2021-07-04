@@ -1,5 +1,4 @@
 'use strict'
-
 /*
 |--------------------------------------------------------------------------
 | Routes
@@ -15,6 +14,7 @@
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
+const View = use('View')
 
 // ...equates to this:
 // Route.get('users', 'UserController.index').as('users.index')
@@ -25,12 +25,23 @@ const Route = use('Route')
 // Route.patch('users/:id', 'UserController.update')
 // Route.get('users/:id/edit', 'UserController.edit').as('users.edit')
 // Route.delete('users/:id', 'UserController.destroy').as('users.destroy')
+View.global('ok', function() {
+    return 'Dikky'
+})
 
-Route.on('/').render('welcome')
-Route.get('admin/login', 'UserController.loginPage')
+// View.global('name', 'UserController.name')
+
+// Route.on('/').render('welcome')
+Route.get('admin/login', 'UserController.loginPage').as('login')
 Route.post('admin/login', 'UserController.login')
 Route.group(() => {
-    Route.get('logout', 'UserController.logout')
+    Route.get('/', 'Admin/PageController.dashboard').as('dashboard')
+    Route.get('logout', 'UserController.logout').as('logout')
     Route.resource('users', 'UserController')
     Route.resource('packet', 'Admin/PacketController')
+
+    Route.resource('booking', 'Admin/BookingController')
+    Route.get('booking/accpet/:id', 'Admin/BookingController.accept').as('booking.accept')
+
+    Route.resource('testimonial', 'Admin/TestimonialController')
 }).prefix('admin').middleware('login')

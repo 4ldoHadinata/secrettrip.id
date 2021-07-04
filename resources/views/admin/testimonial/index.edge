@@ -1,0 +1,45 @@
+@layout('admin.master')
+@section('body')
+<main class="content">
+  <div class="container-fluid p-0">
+    <div class="row">
+      <div class="col-12 col-lg-12 col-xxl-12 d-flex">
+        <div class="card flex-fill">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-lg-10 col-md-8 col-sm-8">
+                <h5 class="card-title mb-0">Bundle</h5>
+              </div>
+              <div class="col-lg-2 col-md-4 col-sm-4">
+                <a href="{{route('testimonial.create')}}"><h5 class="card-title mb-0">Add Testimonial</h5></a>
+              </div>
+            </div>
+          </div>
+          <table class="table table-hover my-0">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Testimonial</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              @each(testimonial in testimonials)
+              <tr>
+                <td>{{testimonial.name}}</td>
+                <td>{{testimonial.testimonial}}</td>
+                <td>
+                  <a href="{{route('testimonial.edit', {id: testimonial.id})}}"><i class="fa fa-pencil fa-2x"
+                      aria-hidden="true"></i></a>
+                  <a href=""><i class="fa fa-remove fa-2x" aria-hidden="true"></i></a>
+                </td>
+              </tr>
+              @endeach
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+@endsection

@@ -20,8 +20,8 @@ class PacketController {
      * @param {View} ctx.view
      */
     async index({ request, response, view }) {
-        const packet = await Packet.all()
-        return response.json(packet)
+        const packets = await Packet.all()
+        return view.render('admin.packet.index', { packets: packets.rows })
     }
 
     /**
@@ -33,7 +33,9 @@ class PacketController {
      * @param {Response} ctx.response
      * @param {View} ctx.view
      */
-    async create({ request, response, view }) {}
+    async create({ request, response, view }) {
+        return view.render('admin.packet.create')
+    }
 
     /**
      * Create/save a new packet.
@@ -43,7 +45,9 @@ class PacketController {
      * @param {Request} ctx.request
      * @param {Response} ctx.response
      */
-    async store({ request, response }) {}
+    async store({ request, response }) {
+        const { data } = request.all()
+    }
 
     /**
      * Display a single packet.
